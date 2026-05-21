@@ -143,7 +143,7 @@ food: (
   <img
     src="https://res.cloudinary.com/dntf51gis/image/upload/v1779374189/Gemini_Generated_Image_bsla9ybsla9ybsla_gh6hpc.png"
     style={{position:"absolute",inset:0,width:"100%",
-    height:"100%",objectFit:"cover",filter:"brightness(0.45)"}}
+    height:"100%",objectFit:"cover",filter:"brightness(0.85)"}}
     alt=""
   />
 ),
@@ -151,7 +151,7 @@ history: (
   <img
     src="https://res.cloudinary.com/dntf51gis/image/upload/v1779374065/Gemini_Generated_Image_ui7t96ui7t96ui7t_aaegwy.png"
     style={{position:"absolute",inset:0,width:"100%",
-    height:"100%",objectFit:"cover",filter:"brightness(0.45)"}}
+    height:"100%",objectFit:"cover",filter:"brightness(0.85)"}}
     alt=""
   />
 ),
@@ -159,7 +159,7 @@ culture: (
   <img
     src="https://res.cloudinary.com/dntf51gis/image/upload/v1779374321/Gemini_Generated_Image_fl5isqfl5isqfl5i_gjtd4m.png"
     style={{position:"absolute",inset:0,width:"100%",
-    height:"100%",objectFit:"cover",filter:"brightness(0.45)"}}
+    height:"100%",objectFit:"cover",filter:"brightness(0.85)"}}
     alt=""
   />
 ),
@@ -167,7 +167,7 @@ culture: (
     <img
     src="https://res.cloudinary.com/dntf51gis/image/upload/v1779374621/Gemini_Generated_Image_agdogoagdogoagdo_qimvgu.png"
     style={{position:"absolute",inset:0,width:"100%",
-    height:"100%",objectFit:"cover",filter:"brightness(0.45)"}}
+    height:"100%",objectFit:"cover",filter:"brightness(0.85)"}}
     alt=""
   />
   ),
@@ -175,7 +175,7 @@ culture: (
       <img
     src="https://res.cloudinary.com/dntf51gis/image/upload/v1779375209/Gemini_Generated_Image_17tfra17tfra17tf_r2jxx6.png"
     style={{position:"absolute",inset:0,width:"100%",
-    height:"100%",objectFit:"cover",filter:"brightness(0.45)"}}
+    height:"100%",objectFit:"cover",filter:"brightness(0.85)"}}
     alt=""
   />
   ),
@@ -183,7 +183,7 @@ culture: (
     <img
     src="https://res.cloudinary.com/dntf51gis/image/upload/v1779375020/Gemini_Generated_Image_wdos3zwdos3zwdos_lbsgcv.png"
     style={{position:"absolute",inset:0,width:"100%",
-    height:"100%",objectFit:"cover",filter:"brightness(0.45)"}}
+    height:"100%",objectFit:"cover",filter:"brightness(0.85)"}}
     alt=""
   />
   ),
@@ -191,7 +191,7 @@ culture: (
      <img
     src="https://res.cloudinary.com/dntf51gis/image/upload/v1779377918/Gemini_Generated_Image_wevd3dwevd3dwevd_uua7u2.png"
     style={{position:"absolute",inset:0,width:"100%",
-    height:"100%",objectFit:"cover",filter:"brightness(0.45)"}}
+    height:"100%",objectFit:"cover",filter:"brightness(0.85)"}}
     alt=""
   />
   ),
@@ -199,7 +199,7 @@ culture: (
      <img
     src="https://res.cloudinary.com/dntf51gis/image/upload/v1779377322/Gemini_Generated_Image_m2s62mm2s62mm2s6_ezvx9b.png"
     style={{position:"absolute",inset:0,width:"100%",
-    height:"100%",objectFit:"cover",filter:"brightness(0.45)"}}
+    height:"100%",objectFit:"cover",filter:"brightness(0.85)"}}
     alt=""
   />
   ),
@@ -207,7 +207,7 @@ culture: (
     <img
     src="https://res.cloudinary.com/dntf51gis/image/upload/v1779378094/Gemini_Generated_Image_7xxik47xxik47xxi_aplppd.png"
     style={{position:"absolute",inset:0,width:"100%",
-    height:"100%",objectFit:"cover",filter:"brightness(0.45)"}}
+    height:"100%",objectFit:"cover",filter:"brightness(0.85)"}}
     alt=""
   />
   ),
@@ -215,7 +215,7 @@ culture: (
   <img
     src="https://res.cloudinary.com/dntf51gis/image/upload/v1779375358/Gemini_Generated_Image_rhbyn6rhbyn6rhby_olount.png"
     style={{position:"absolute",inset:0,width:"100%",
-    height:"100%",objectFit:"cover",filter:"brightness(0.45)"}}
+    height:"100%",objectFit:"cover",filter:"brightness(0.85)"}}
     alt=""
   />
   ),
@@ -303,9 +303,9 @@ const styles = `
   .sec-card { position: relative; border-radius: 14px; overflow: hidden; cursor: pointer; transition: transform 0.15s; height: 140px; border: 1px solid var(--border); }
   .sec-card:active { transform: scale(0.97); }
   .sec-card-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-  .sec-card-body { position: relative; z-index: 1; padding: 12px; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; }
-  .sec-title { font-size: 15px; font-weight: 1000; color: #fff; margin-bottom: 2px; line-height: 1.3; text-shadow: 0 1px 3px rgba(0,0,0,0.4); }
-  .sec-sub { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.3; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
+  .sec-card-body { position: relative; z-index: 1; padding: 12px; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0) 100%); border-radius: 14px; }
+  .sec-title { font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 3px; line-height: 1.3; text-shadow: 0 2px 6px rgba(0,0,0,1), 0 0 16px rgba(0,0,0,0.9); letter-spacing: 0.01em; }
+  .sec-sub { font-size: 12px; font-weight: 600; color: #fff; line-height: 1.3; text-shadow: 0 2px 6px rgba(0,0,0,1); }
   .sec-badge { display: inline-block; font-size: 10px; padding: 2px 7px; border-radius: 10px; margin-top: 6px; background: rgba(0,0,0,0.25); color: #fff; width: fit-content; }
   .section-view { animation: slideIn 0.2s ease; }
   @keyframes slideIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
