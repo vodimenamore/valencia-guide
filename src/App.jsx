@@ -324,7 +324,8 @@ const styles = `
   .item-num { width: 26px; height: 26px; border-radius: 50%; background: var(--taronja-light); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; color: var(--taronja-mid); flex-shrink: 0; margin-top: 1px; }
   .item-name { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
   .item-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
-  .item-addr { font-size: 11px; color: var(--taronja-mid); margin-top: 4px; display: flex; align-items: center; gap: 3px; }
+  .item-addr { font-size: 11px; color: var(--taronja-mid); margin-top: 4px; display: flex; align-items: center; gap: 3px; text-decoration: none; }
+  .item-addr:hover { text-decoration: underline; }
   .loading-spinner { display: inline-block; width: 12px; height: 12px; border: 1.5px solid var(--taronja-light); border-top-color: var(--taronja-mid); border-radius: 50%; animation: spin 0.8s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
 `;
@@ -357,7 +358,16 @@ function SectionView({ section, onBack }) {
             <div>
               <div className="item-name">{item.name}</div>
               <div className="item-desc">{item.desc}</div>
-              <div className="item-addr">📍 {item.address}</div>
+              {item.address && (
+                <a
+                  className="item-addr"
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.address + ", Valencia, Spain")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  📍 {item.address}
+                </a>
+              )}
             </div>
           </div>
         ))}
