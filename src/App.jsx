@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 
 const SECTIONS = [
-  { id: "food",     label: "Food & drink",            desc: "What a local actually eats",   color: "#CC4A00", bg: "#FFF2EA" },
+  { id: "food",     label: "Food & drink",            desc: "What a local actually eats",   color: "#CC4A00", bg: "#FFF2EA"},
   { id: "history",  label: "History & architecture",  desc: "2,000 years in one city",      color: "#534AB7", bg: "#EEEDFE" },
   { id: "culture",  label: "Culture & events",        desc: "Festivals, art & nightlife",   color: "#CC4A00", bg: "#FFF2EA" },
   { id: "beaches",  label: "Beaches & outdoors",      desc: "Sun, sand & the Turia garden", color: "#185FA5", bg: "#E6F1FB" },
@@ -141,7 +141,7 @@ const CONTENT = {
 const CARD_SVGS = {
 food: (
   <img
-    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779362652/Screenshot_2026-05-21_at_13.23.54_f1ohpe.png"
+    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779374189/Gemini_Generated_Image_bsla9ybsla9ybsla_gh6hpc.png"
     style={{position:"absolute",inset:0,width:"100%",
     height:"100%",objectFit:"cover",filter:"brightness(0.45)"}}
     alt=""
@@ -149,227 +149,75 @@ food: (
 ),
 history: (
   <img
-    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779361993/Screenshot_2026-05-21_at_10.28.33_duzytk.png"
+    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779374065/Gemini_Generated_Image_ui7t96ui7t96ui7t_aaegwy.png"
     style={{position:"absolute",inset:0,width:"100%",
     height:"100%",objectFit:"cover",filter:"brightness(0.45)"}}
     alt=""
   />
 ),
-  culture: (
-    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" style={{position:"absolute",inset:0,width:"100%",height:"100%"}}>
-      <rect width="200" height="140" fill="#5C1800"/>
-      <rect width="200" height="140" fill="#9A2800" opacity="0.7"/>
-      <circle cx="100" cy="70" r="50" fill="none" stroke="#FF6C0C" strokeWidth="1" opacity="0.3"/>
-      <circle cx="100" cy="70" r="35" fill="none" stroke="#FF8C42" strokeWidth="1" opacity="0.3"/>
-      <circle cx="100" cy="70" r="20" fill="#FF6C0C" opacity="0.25"/>
-      <path d="M70 90 Q100 40 130 90" fill="none" stroke="#FFD166" strokeWidth="2" opacity="0.6"/>
-      <path d="M60 95 Q100 30 140 95" fill="none" stroke="#FF8C42" strokeWidth="1.5" opacity="0.4"/>
-      <circle cx="100" cy="70" r="5" fill="#FFD166" opacity="0.8"/>
-      <rect x="30" y="20" width="4" height="30" fill="#FF6C0C" opacity="0.5"/>
-      <circle cx="32" cy="18" r="5" fill="#FFD166" opacity="0.6"/>
-      <rect x="160" y="30" width="4" height="22" fill="#FF6C0C" opacity="0.5"/>
-      <circle cx="162" cy="28" r="5" fill="#FFD166" opacity="0.6"/>
-      <rect x="0" y="110" width="200" height="30" fill="rgba(0,0,0,0.25)"/>
-    </svg>
-  ),
+culture: (
+  <img
+    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779374321/Gemini_Generated_Image_fl5isqfl5isqfl5i_gjtd4m.png"
+    style={{position:"absolute",inset:0,width:"100%",
+    height:"100%",objectFit:"cover",filter:"brightness(0.45)"}}
+    alt=""
+  />
+),
   beaches: (
-    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" style={{position:"absolute",inset:0,width:"100%",height:"100%"}}>
-      <rect width="200" height="80" fill="#1A6FA8"/>
-      <rect y="80" width="200" height="60" fill="#E8C97A"/>
-      <rect width="200" height="55" fill="#0E5A96"/>
-      <path d="M0 55 Q50 45 100 55 Q150 65 200 55 L200 80 Q150 75 100 80 Q50 85 0 80Z" fill="#2196c8" opacity="0.6"/>
-      <path d="M0 65 Q60 58 110 65 Q155 72 200 65 L200 85 Q155 82 110 85 Q60 88 0 85Z" fill="#5BC8F0" opacity="0.4"/>
-      <circle cx="160" cy="22" r="16" fill="#FFD166" opacity="0.9"/>
-      <circle cx="160" cy="22" r="12" fill="#FFE599" opacity="0.5"/>
-      <path d="M30 140 L50 90 L70 140Z" fill="#D4A843" opacity="0.6"/>
-      <line x1="50" y1="90" x2="50" y2="78" stroke="#8B6914" strokeWidth="2"/>
-      <path d="M50 78 Q70 72 75 80 Q70 82 50 78Z" fill="#FF6C0C" opacity="0.85"/>
-    </svg>
+    <img
+    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779374621/Gemini_Generated_Image_agdogoagdogoagdo_qimvgu.png"
+    style={{position:"absolute",inset:0,width:"100%",
+    height:"100%",objectFit:"cover",filter:"brightness(0.45)"}}
+    alt=""
+  />
   ),
   practical: (
-    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" style={{position:"absolute",inset:0,width:"100%",height:"100%"}}>
-      <rect width="200" height="140" fill="#2A2A2A"/>
-      <rect y="95" width="200" height="45" fill="#1A1A1A"/>
-      <rect x="0" y="88" width="200" height="10" fill="#333"/>
-      <line x1="0" y1="93" x2="200" y2="93" stroke="#555" strokeWidth="1" strokeDasharray="12,8"/>
-      <rect x="15" y="50" width="25" height="45" fill="#3A3A3A"/>
-      <rect x="17" y="55" width="8" height="6" fill="#88CCFF" opacity="0.6"/>
-      <rect x="29" y="55" width="8" height="6" fill="#88CCFF" opacity="0.6"/>
-      <rect x="17" y="65" width="8" height="6" fill="#88CCFF" opacity="0.4"/>
-      <rect x="29" y="65" width="8" height="6" fill="#FFD166" opacity="0.5"/>
-      <rect x="70" y="35" width="30" height="58" fill="#3A3A3A"/>
-      <rect x="73" y="40" width="10" height="7" fill="#88CCFF" opacity="0.6"/>
-      <rect x="86" y="40" width="10" height="7" fill="#88CCFF" opacity="0.6"/>
-      <rect x="73" y="52" width="10" height="7" fill="#FFD166" opacity="0.5"/>
-      <rect x="86" y="52" width="10" height="7" fill="#88CCFF" opacity="0.4"/>
-      <rect x="140" y="55" width="40" height="38" fill="#3A3A3A"/>
-      <rect x="143" y="60" width="12" height="8" fill="#88CCFF" opacity="0.5"/>
-      <rect x="159" y="60" width="12" height="8" fill="#88CCFF" opacity="0.6"/>
-      <circle cx="25" cy="115" r="8" fill="#555"/>
-      <circle cx="25" cy="115" r="4" fill="#333"/>
-      <circle cx="175" cy="115" r="8" fill="#555"/>
-      <circle cx="175" cy="115" r="4" fill="#333"/>
-      <rect x="33" y="108" width="142" height="14" fill="#444" rx="2"/>
-      <circle cx="100" cy="22" r="5" fill="#FF6C0C" opacity="0.9"/>
-      <path d="M100 22 L100 12" stroke="#FF6C0C" strokeWidth="1.5" opacity="0.7"/>
-    </svg>
+      <img
+    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779375209/Gemini_Generated_Image_17tfra17tfra17tf_r2jxx6.png"
+    style={{position:"absolute",inset:0,width:"100%",
+    height:"100%",objectFit:"cover",filter:"brightness(0.45)"}}
+    alt=""
+  />
   ),
   shopping: (
-    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" style={{position:"absolute",inset:0,width:"100%",height:"100%"}}>
-      <rect width="200" height="140" fill="#3D1428"/>
-      <rect width="200" height="140" fill="#6B2442" opacity="0.7"/>
-      <rect x="20" y="30" width="50" height="70" rx="2" fill="#8B3458" opacity="0.7"/>
-      <rect x="22" y="20" width="46" height="12" rx="2" fill="#FF6CA8" opacity="0.5"/>
-      <rect x="25" y="38" width="18" height="14" fill="#FFB8D4" opacity="0.4"/>
-      <rect x="47" y="38" width="18" height="14" fill="#FFB8D4" opacity="0.3"/>
-      <rect x="25" y="58" width="18" height="14" fill="#FFB8D4" opacity="0.3"/>
-      <rect x="47" y="58" width="18" height="14" fill="#FFB8D4" opacity="0.4"/>
-      <rect x="80" y="45" width="50" height="55" rx="2" fill="#7A2040" opacity="0.8"/>
-      <rect x="82" y="35" width="46" height="12" rx="2" fill="#FF6CA8" opacity="0.5"/>
-      <rect x="85" y="53" width="18" height="14" fill="#FFB8D4" opacity="0.4"/>
-      <rect x="107" y="53" width="18" height="14" fill="#FFB8D4" opacity="0.3"/>
-      <rect x="85" y="73" width="18" height="14" fill="#FFB8D4" opacity="0.3"/>
-      <rect x="107" y="73" width="18" height="14" fill="#FFB8D4" opacity="0.4"/>
-      <rect x="145" y="50" width="38" height="50" rx="2" fill="#6B2442" opacity="0.8"/>
-      <rect x="147" y="40" width="34" height="12" rx="2" fill="#FF6CA8" opacity="0.4"/>
-      <rect x="0" y="100" width="200" height="40" fill="rgba(0,0,0,0.3)"/>
-      <circle cx="40" cy="115" r="6" fill="#FF6CA8" opacity="0.5"/>
-      <circle cx="100" cy="118" r="6" fill="#FF6CA8" opacity="0.5"/>
-      <circle cx="160" cy="113" r="6" fill="#FF6CA8" opacity="0.5"/>
-    </svg>
+    <img
+    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779375020/Gemini_Generated_Image_wdos3zwdos3zwdos_lbsgcv.png"
+    style={{position:"absolute",inset:0,width:"100%",
+    height:"100%",objectFit:"cover",filter:"brightness(0.45)"}}
+    alt=""
+  />
   ),
   nightlife: (
-    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" style={{position:"absolute",inset:0,width:"100%",height:"100%"}}>
-      <rect width="200" height="140" fill="#0A0818"/>
-      <rect width="200" height="140" fill="#1A0A3A" opacity="0.9"/>
-      {/* city skyline silhouette */}
-      <rect x="0" y="90" width="200" height="50" fill="#0A0818"/>
-      <rect x="10" y="70" width="18" height="50" fill="#1A0A3A"/>
-      <rect x="8" y="65" width="22" height="8" fill="#241448"/>
-      <rect x="35" y="55" width="14" height="65" fill="#1A0A3A"/>
-      <rect x="33" y="50" width="18" height="8" fill="#241448"/>
-      <rect x="60" y="75" width="20" height="45" fill="#1A0A3A"/>
-      <rect x="90" y="60" width="16" height="60" fill="#1A0A3A"/>
-      <rect x="88" y="54" width="20" height="8" fill="#241448"/>
-      <rect x="115" y="70" width="22" height="50" fill="#1A0A3A"/>
-      <rect x="145" y="65" width="16" height="55" fill="#1A0A3A"/>
-      <rect x="143" y="58" width="20" height="10" fill="#241448"/>
-      <rect x="170" y="75" width="20" height="45" fill="#1A0A3A"/>
-      {/* window lights */}
-      <rect x="13" y="73" width="4" height="4" fill="#FFD166" opacity="0.7"/>
-      <rect x="20" y="73" width="4" height="4" fill="#FFD166" opacity="0.4"/>
-      <rect x="13" y="82" width="4" height="4" fill="#FF6C0C" opacity="0.5"/>
-      <rect x="38" y="60" width="4" height="4" fill="#FFD166" opacity="0.6"/>
-      <rect x="38" y="70" width="4" height="4" fill="#FFD166" opacity="0.4"/>
-      <rect x="44" y="65" width="4" height="4" fill="#FF6C0C" opacity="0.5"/>
-      <rect x="93" y="65" width="4" height="4" fill="#FFD166" opacity="0.7"/>
-      <rect x="100" y="65" width="4" height="4" fill="#FFD166" opacity="0.4"/>
-      <rect x="93" y="74" width="4" height="4" fill="#FF6C0C" opacity="0.5"/>
-      <rect x="148" y="68" width="4" height="4" fill="#FFD166" opacity="0.6"/>
-      <rect x="155" y="73" width="4" height="4" fill="#FFD166" opacity="0.4"/>
-      {/* stars */}
-      <circle cx="25" cy="20" r="1" fill="#fff" opacity="0.6"/>
-      <circle cx="55" cy="12" r="1.5" fill="#fff" opacity="0.5"/>
-      <circle cx="80" cy="25" r="1" fill="#fff" opacity="0.7"/>
-      <circle cx="120" cy="15" r="1" fill="#fff" opacity="0.5"/>
-      <circle cx="150" cy="22" r="1.5" fill="#fff" opacity="0.6"/>
-      <circle cx="175" cy="10" r="1" fill="#fff" opacity="0.4"/>
-      <circle cx="40" cy="30" r="1" fill="#fff" opacity="0.4"/>
-      <circle cx="165" cy="35" r="1" fill="#fff" opacity="0.5"/>
-      {/* moon */}
-      <circle cx="170" cy="22" r="10" fill="#241448"/>
-      <circle cx="165" cy="18" r="10" fill="#1A0A3A"/>
-      <circle cx="164" cy="17" r="9" fill="#E8D5A8" opacity="0.25"/>
-      {/* DJ light beams */}
-      <path d="M100 140 L60 90" stroke="#9B5FC0" strokeWidth="1.5" opacity="0.3"/>
-      <path d="M100 140 L140 90" stroke="#FF6C0C" strokeWidth="1.5" opacity="0.3"/>
-      <path d="M100 140 L100 85" stroke="#FFD166" strokeWidth="1.5" opacity="0.25"/>
-    </svg>
+     <img
+    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779377918/Gemini_Generated_Image_wevd3dwevd3dwevd_uua7u2.png"
+    style={{position:"absolute",inset:0,width:"100%",
+    height:"100%",objectFit:"cover",filter:"brightness(0.45)"}}
+    alt=""
+  />
   ),
   kids: (
-    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" style={{position:"absolute",inset:0,width:"100%",height:"100%"}}>
-      <rect width="200" height="140" fill="#0A3D6B"/>
-      <rect width="200" height="140" fill="#1565A8" opacity="0.6"/>
-      <rect y="105" width="200" height="35" fill="#4CAF50" opacity="0.5"/>
-      <rect y="110" width="200" height="30" fill="#388E3C" opacity="0.4"/>
-      <circle cx="100" cy="78" r="45" fill="none" stroke="#88CCFF" strokeWidth="1" opacity="0.2"/>
-      <line x1="100" y1="33" x2="100" y2="123" stroke="#FF6C0C" strokeWidth="3" opacity="0.7"/>
-      <line x1="55" y1="78" x2="145" y2="78" stroke="#FF6C0C" strokeWidth="3" opacity="0.7"/>
-      <line x1="100" y1="33" x2="68" y2="78" stroke="#FFD166" strokeWidth="2.5" opacity="0.6"/>
-      <line x1="100" y1="33" x2="132" y2="78" stroke="#FFD166" strokeWidth="2.5" opacity="0.6"/>
-      <circle cx="100" cy="33" r="6" fill="#FF6C0C" opacity="0.9"/>
-      <circle cx="55" cy="78" r="5" fill="#FFD166" opacity="0.8"/>
-      <circle cx="145" cy="78" r="5" fill="#FFD166" opacity="0.8"/>
-      <path d="M65 110 Q80 90 100 110 Q120 90 135 110" fill="none" stroke="#88CCFF" strokeWidth="2" opacity="0.5"/>
-      <circle cx="30" cy="30" r="10" fill="#FFD166" opacity="0.2"/>
-      <circle cx="170" cy="30" r="7" fill="#88CCFF" opacity="0.2"/>
-    </svg>
+     <img
+    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779377322/Gemini_Generated_Image_m2s62mm2s62mm2s6_ezvx9b.png"
+    style={{position:"absolute",inset:0,width:"100%",
+    height:"100%",objectFit:"cover",filter:"brightness(0.45)"}}
+    alt=""
+  />
   ),
   flora: (
-    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" style={{position:"absolute",inset:0,width:"100%",height:"100%"}}>
-      <rect width="200" height="140" fill="#0D2E0D"/>
-      <rect width="200" height="140" fill="#1A4A1A" opacity="0.8"/>
-      <rect y="105" width="200" height="35" fill="#0D2E0D"/>
-      {/* sky glow */}
-      <circle cx="100" cy="20" r="40" fill="#7BC67E" opacity="0.08"/>
-      {/* jacaranda — left tree */}
-      <rect x="28" y="55" width="5" height="55" fill="#5D3A1A"/>
-      <rect x="22" y="75" width="4" height="30" fill="#5D3A1A" transform="rotate(-20 24 75)"/>
-      <ellipse cx="30" cy="48" rx="22" ry="16" fill="#7B3FA0" opacity="0.85"/>
-      <ellipse cx="18" cy="58" rx="14" ry="10" fill="#9B5FC0" opacity="0.6"/>
-      <ellipse cx="44" cy="54" rx="14" ry="10" fill="#7B3FA0" opacity="0.6"/>
-      {/* bottle tree — centre */}
-      <ellipse cx="100" cy="92" rx="10" ry="18" fill="#4A7A2A"/>
-      <rect x="97" y="55" width="6" height="38" fill="#4A7A2A"/>
-      <ellipse cx="100" cy="52" rx="18" ry="14" fill="#2D5A1A" opacity="0.9"/>
-      <ellipse cx="88" cy="60" rx="10" ry="8" fill="#3D6A22" opacity="0.7"/>
-      <ellipse cx="112" cy="60" rx="10" ry="8" fill="#3D6A22" opacity="0.7"/>
-      {/* ficus — right */}
-      <rect x="162" y="50" width="7" height="60" fill="#5D3A1A"/>
-      <rect x="155" y="72" width="5" height="35" fill="#5D3A1A" transform="rotate(15 157 72)"/>
-      <ellipse cx="165" cy="42" rx="25" ry="18" fill="#1A4A1A" opacity="0.95"/>
-      <ellipse cx="150" cy="52" rx="16" ry="11" fill="#2A5A2A" opacity="0.7"/>
-      <ellipse cx="178" cy="50" rx="14" ry="10" fill="#1A4A1A" opacity="0.7"/>
-      {/* fallen jacaranda petals */}
-      <circle cx="20" cy="112" r="2" fill="#9B5FC0" opacity="0.5"/>
-      <circle cx="35" cy="118" r="1.5" fill="#7B3FA0" opacity="0.5"/>
-      <circle cx="50" cy="114" r="2" fill="#9B5FC0" opacity="0.4"/>
-      <circle cx="12" cy="120" r="1.5" fill="#7B3FA0" opacity="0.4"/>
-      {/* ground */}
-      <rect y="108" width="200" height="32" fill="#0D2E0D" opacity="0.7"/>
-    </svg>
+    <img
+    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779378094/Gemini_Generated_Image_7xxik47xxik47xxi_aplppd.png"
+    style={{position:"absolute",inset:0,width:"100%",
+    height:"100%",objectFit:"cover",filter:"brightness(0.45)"}}
+    alt=""
+  />
   ),
   sports: (
-    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" style={{position:"absolute",inset:0,width:"100%",height:"100%"}}>
-      <rect width="200" height="140" fill="#4A1800"/>
-      <rect width="200" height="140" fill="#7A2800" opacity="0.6"/>
-      {/* stadium outline */}
-      <ellipse cx="100" cy="80" rx="75" ry="45" fill="none" stroke="#FF6C0C" strokeWidth="2" opacity="0.5"/>
-      <ellipse cx="100" cy="80" rx="55" ry="32" fill="none" stroke="#FF8C42" strokeWidth="1.5" opacity="0.4"/>
-      {/* pitch */}
-      <ellipse cx="100" cy="80" rx="38" ry="22" fill="#2D6A2D" opacity="0.7"/>
-      <ellipse cx="100" cy="80" rx="38" ry="22" fill="none" stroke="#4CAF50" strokeWidth="1" opacity="0.5"/>
-      <line x1="100" y1="58" x2="100" y2="102" stroke="#4CAF50" strokeWidth="1" opacity="0.5"/>
-      <circle cx="100" cy="80" r="7" fill="none" stroke="#4CAF50" strokeWidth="1" opacity="0.5"/>
-      {/* stands suggestion */}
-      <rect x="20" y="70" width="8" height="20" fill="#CC4A00" opacity="0.4"/>
-      <rect x="172" y="70" width="8" height="20" fill="#CC4A00" opacity="0.4"/>
-      {/* football */}
-      <circle cx="155" cy="30" r="14" fill="#fff" opacity="0.15"/>
-      <circle cx="155" cy="30" r="10" fill="#fff" opacity="0.2"/>
-      <path d="M149 24 L155 20 L161 24 L161 36 L155 40 L149 36Z" fill="none" stroke="#FF6C0C" strokeWidth="1" opacity="0.5"/>
-      {/* basketball */}
-      <circle cx="45" cy="28" r="11" fill="#FF6C0C" opacity="0.3"/>
-      <path d="M34 28 Q45 22 56 28" fill="none" stroke="#CC4A00" strokeWidth="1" opacity="0.5"/>
-      <path d="M34 28 Q45 34 56 28" fill="none" stroke="#CC4A00" strokeWidth="1" opacity="0.5"/>
-      <line x1="45" y1="17" x2="45" y2="39" stroke="#CC4A00" strokeWidth="1" opacity="0.5"/>
-      {/* crowd dots */}
-      <circle cx="60" cy="48" r="2" fill="#FFD166" opacity="0.4"/>
-      <circle cx="70" cy="44" r="2" fill="#FFD166" opacity="0.3"/>
-      <circle cx="130" cy="44" r="2" fill="#FFD166" opacity="0.4"/>
-      <circle cx="140" cy="48" r="2" fill="#FFD166" opacity="0.3"/>
-      <rect x="0" y="108" width="200" height="32" fill="rgba(0,0,0,0.3)"/>
-    </svg>
+  <img
+    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779375358/Gemini_Generated_Image_rhbyn6rhbyn6rhby_olount.png"
+    style={{position:"absolute",inset:0,width:"100%",
+    height:"100%",objectFit:"cover",filter:"brightness(0.45)"}}
+    alt=""
+  />
   ),
 };
 
@@ -456,8 +304,8 @@ const styles = `
   .sec-card:active { transform: scale(0.97); }
   .sec-card-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
   .sec-card-body { position: relative; z-index: 1; padding: 12px; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; }
-  .sec-title { font-size: 13px; font-weight: 500; color: #fff; margin-bottom: 2px; line-height: 1.3; text-shadow: 0 1px 3px rgba(0,0,0,0.4); }
-  .sec-sub { font-size: 11px; color: rgba(255,255,255,0.75); line-height: 1.3; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
+  .sec-title { font-size: 15px; font-weight: 1000; color: #fff; margin-bottom: 2px; line-height: 1.3; text-shadow: 0 1px 3px rgba(0,0,0,0.4); }
+  .sec-sub { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.3; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
   .sec-badge { display: inline-block; font-size: 10px; padding: 2px 7px; border-radius: 10px; margin-top: 6px; background: rgba(0,0,0,0.25); color: #fff; width: fit-content; }
   .section-view { animation: slideIn 0.2s ease; }
   @keyframes slideIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
@@ -541,7 +389,7 @@ function NowBar() {
       const data = await res.json();
       const textBlocks = (data.content || []).filter(b => b.type === "text").map(b => b.text).join(" ").trim();
       const clean = textBlocks.replace(/^["']|["']$/g, "").trim();
-      setText(clean || "Valencia is alive — check local listings for today's events.");
+      setText(clean || "Valencia is alive:check local listings for today's events. - COMING SOON");
     } catch {
       setText("Valencia is alive — check local listings for today's events.");
     } finally {
@@ -581,7 +429,7 @@ export default function App() {
           <div className="header-eyebrow">Your insider guide</div>
           <div className="header-title">Valencia</div>
           <div className="header-taronja">la ciutat de la taronja</div>
-          <div className="header-sub">What to eat, see & do — like a local</div>
+          <div className="header-sub">What to eat, see & do while visiting our beatiful city</div>
           <div style={{marginTop:20,marginLeft:-20,marginRight:-20,marginBottom:-28}}>
             <MosaicStrip height={22} />
           </div>
