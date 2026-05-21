@@ -11,6 +11,8 @@ const SECTIONS = [
   { id: "sports",   label: "Sports events",           desc: "Football, basketball & more",  color: "#CC4A00", bg: "#FFF2EA" },
   { id: "shopping", label: "Shopping & markets",      desc: "What to buy & where",          color: "#993556", bg: "#FBEAF0" },
   { id: "practical",label: "Practical tips",          desc: "How to move like a local",     color: "#5F5E5A", bg: "#F1EFE8" },
+  { id: "walks",    label: "Curated city walks",      desc: "The best routes on foot",      color: "#7A4E2D", bg: "#FAF0E6" },
+  { id: "bsides",   label: "The B-Sides",             desc: "Everything else worth knowing", color: "#3A3560", bg: "#EEEDF8" },
 ];
 
 const CONTENT = {
@@ -33,7 +35,7 @@ const CONTENT = {
       { name: "Catedral de Valencia", desc: "Gothic, Baroque and Romanesque all at once. Allegedly holds the Holy Grail. Climb the Miguelete tower for 207 steps and panoramic views — not included in the main ticket. 🎟 Cathedral: €8 adults (includes audio guide), €6 concessions, free under 8. Miguelete Tower: €2 extra. Open Mon–Sat 10am–6:30pm, Sun 2–6:30pm.", lat: 39.4752, lng: -0.3751, address: "Plaça de la Reina, s/n" },
       { name: "Ciudad de las Artes y las Ciencias", desc: "Calatrava's futurist complex. Stunning at night. Free to walk around the exterior — the Hemisfèric reflection alone is worth it. Individual buildings require tickets. 🎟 Exterior: free. Oceanogràfic: €33.70 adults. Science Museum: included in combos. Triple combo (Oceanogràfic + Science Museum + Hemisfèric): €47.75 adults, valid 3 consecutive days. Book online for 10–15% discount.", lat: 39.4536, lng: -0.3487, address: "Av. del Professor López Piñero, 7" },
       { name: "Barrio del Carmen", desc: "Medieval quarter with Roman walls. Street art, tiny bars, and the best tapas crawl in the city. 🎟 Free to explore — it's a neighbourhood, not a ticketed site. Just walk in.", lat: 39.4772, lng: -0.3815, address: "Barrio del Carmen, Valencia" },
-      { name: "Torres de Serranos", desc: "14th-century city gate. Climb to the top for a panoramic view of the old town. 🎟 €2 adults, €1 concessions. Free on Sundays and public holidays — the best day to visit. Open Tue–Sat 10am–7pm, Sun & holidays 10am–2pm.", lat: 39.4789, lng: -0.3779, address: "Plaça dels Furs, s/n" },
+      { name: "Torres de Serranos", desc: "The grandest of Valencia's two surviving medieval city gates, built between 1392 and 1398 by the master builder Pere Balaguer. It was the ceremonial entrance to the city — kings, ambassadors and pilgrims all passed through here. For centuries it doubled as a noble prison: the city's aristocrats were confined here rather than in common jails, and the cells in the towers still carry the faint traces of their long occupation. The towers survived the 1957 floods that destroyed much of the old city because they were already built to withstand anything — the waterline from that disaster is still marked on the stone.\n\nEvery year on the last Sunday before Fallas (held in mid-February), the towers become the stage for La Crida — the official proclamation that opens the Fallas festival.\n\n🎟 €2 adults, €1 concessions. Free on Sundays and public holidays — the best day to visit. Open Tue–Sat 10am–7pm, Sun & holidays 10am–2pm.", lat: 39.4789, lng: -0.3779, address: "Plaça dels Furs, s/n" },
       { name: "Palau de les Arts Reina Sofía", desc: "Calatrava's opera house that looks like a giant helmet. Even if you don't go in, walk around it at sunset — the exterior is free. Guided tours of the interior run Mon–Sat. 🎟 Exterior: free. Guided interior tour: check lesarts.com for current pricing (approx. €10–12). Opera and concert tickets vary — book well in advance for major productions.", lat: 39.4555, lng: -0.3512, address: "Av. del Professor López Piñero, 1" },
     ],
   },
@@ -136,6 +138,33 @@ const CONTENT = {
       { name: "Formula E & motorsport at Ricardo Tormo", desc: "Beyond MotoGP, the Circuit Ricardo Tormo hosts Formula E pre-season testing (usually October–November, often free to spectators), GT racing, NASCAR, and various other motor events throughout the year. Check circuitovalencia.com for the full calendar — some events are free or very cheap to attend.", address: "Circuit Ricardo Tormo, Cheste — circuitovalencia.com" },
     ],
   },
+  bsides: {
+    insiderNote: "The things that don't fit a category but are worth knowing about. International food done properly, the record shops the locals use, the ice cream worth crossing the city for, and the souvenir shops that aren't embarrassing.",
+    items: [
+      { name: "Ramen Kagura", desc: "The best ramen in Valencia — a serious Japanese kitchen run by people who care. Tonkotsu, shio and shoyu broths made from scratch, good gyoza, proper Japanese beer. Small, always busy, no reservations. Go early or queue. A world away from the tourist Japanese restaurants near the cathedral.", address: "Carrer de Vilamarxant, 5, Ruzafa" },
+      { name: "La Sal — Lebanese kitchen", desc: "A small, excellent Lebanese restaurant in Ruzafa that has been quietly popular with locals for years. Hummus, fattoush, kibbeh, grilled meats — everything made properly. The mezze spread for two is the right order. Bring your own wine or order from their short list.", address: "Carrer de Sueca, 44, Ruzafa" },
+      { name: "Pho 80", desc: "Unpretentious Vietnamese canteen, run by a Vietnamese family, serving some of the best pho in Spain. Bright, noisy, fast and cheap. The bò kho (beef stew) and bún bò Huế are worth ordering over the pho if you want something different. Cash preferred.", address: "Carrer de Russafa, 23" },
+      { name: "Heladería Roxy", desc: "An old-school Valencian ice cream parlour that has been in the same spot since 1960. No artisan branding, no Instagram aesthetic — just exceptional ice cream made the traditional way. The tiramisu, pistachio and crema catalana flavours are the ones to order. A single scoop costs less than you expect. Queue is long on summer evenings and entirely worth it.", address: "Carrer de Sorní, 7" },
+      { name: "Del Poble Gelats Artesans", desc: "The ice cream shop that Valencians argue about most enthusiastically. Made in small batches, flavours rotate with the season — in spring look for taronja (orange blossom), in summer the horchata sorbet is extraordinary. Multiple locations around the city; the Ruzafa branch is the most convenient.", address: "Carrer de Cadis, 47, Ruzafa" },
+      { name: "Discos Martínez", desc: "A proper independent record shop — vinyl and CDs, new and secondhand, strong on Spanish rock, jazz, flamenco and Latin music. The kind of shop that has a recommendation written on a Post-it next to half the records. The staff know everything. In the same premises for decades, a few streets behind the Mercado Central.", address: "Carrer de Baix, 28, El Carmen" },
+      { name: "La Gramola Records", desc: "Ruzafa's neighbourhood record shop and a genuinely good one. Specialises in alternative, indie, electronic and post-punk. Regular in-store listening sessions and a community noticeboard for local gigs. Small, packed floor-to-ceiling, and staffed by people who will talk to you for an hour if you let them.", address: "Carrer de Dénia, 31, Ruzafa" },
+      { name: "Souvenirs worth buying", desc: "Avoid the cathedral tourist shops. The three things worth taking home from Valencia: hand-painted ceramic tiles from Manises (buy directly from the workshops in Manises, 15min by metro — far cheaper and better quality than city centre shops); paella spice kits and smoked paprika from Mercado Central (La Carmencita stall on the ground floor); and artisan nougat (torró) from Rafa Gorris on Carrer de la Pau, who has been making it in Valencia for four generations. The turró d'Alacant (hard, with whole almonds) and turró de Xixona (soft) are the originals.", address: "Mercado Central / Carrer de la Pau / Manises" },
+      { name: "Las Añadas de España", desc: "The best wine shop in Valencia — a serious, well-curated selection of Spanish wines with particular depth in Valencian DO wines (Utiel-Requena, Valencia DO, Alicante). The staff give honest recommendations and won't oversell. A good place to pick up a bottle of Mustiguillo or Celler del Roure, two of the most interesting winemakers working in the Valencian region.", address: "Carrer de Sorní, 17" },
+      { name: "Café Jerusalem", desc: "A small, deeply atmospheric Middle Eastern café-restaurant in El Carmen that has been part of the neighbourhood for decades. Falafel, shawarma, pitta sandwiches and excellent mint tea. Cheap, consistently good, and popular with students and artists from the nearby fine arts school. The terrace opens in summer.", address: "Carrer de Calatrava, 12, El Carmen" },
+    ],
+  },
+  walks: {
+    insiderNote: "Valencia is one of the most walkable cities in Europe. The old town is compact, the Turia garden is a 9km car-free corridor, and the beach is 30 minutes on foot from the cathedral. The best way to understand a city is to walk it slowly.",
+    items: [
+      { name: "El Carmen at dawn", desc: "Start at Torres de Serranos at 8am before anyone else arrives. Walk south through the medieval grid — Carrer dels Cavallers, Plaça del Tossal, Carrer de la Bolseria. Turn into the narrow lanes east of the market: Plaça de la Virgen, the cathedral apse, the orange trees in Carrer de la Pau. End with breakfast at a neighbourhood bar. An hour on foot through 2,000 years of city — and almost completely silent.", address: "Start: Torres de Serranos, Plaça dels Furs" },
+      { name: "Ruzafa — the creative quarter", desc: "Valencia's most energetic barrio and the best walking neighbourhood in the city. Enter from Carrer de Literat Azorín and work south through Carrer de Cadis, Carrer de Sueca and Carrer de Dénia. Independent boutiques, good coffee, the best brunch spots in Valencia, street art on nearly every corner, and a neighbourhood market (Mercat de Russafa) worth stopping in. The whole barrio fits inside a 15-minute square — explore slowly. Afternoons are busier; mornings are more local.", address: "Start: Plaça del Regne (entrance to Ruzafa)" },
+      { name: "Turia Garden end-to-end", desc: "The old Turia riverbed diverted after the 1957 floods and turned into a 9km linear park. Start at Bioparc at the western end and walk east: through the gardens, past Gulliver, under the carved stone bridges (each one different — the Pont dels Serrans and Pont de la Trinitat are medieval originals), past the Palau de la Música, through the Jardins del Real with its monumental ficus trees, and all the way to the City of Arts and Sciences at the eastern end. Allow 2.5–3 hours at a relaxed pace. Best done in the morning or golden hour.", address: "Start: Bioparc, Av. Pío Baroja" },
+      { name: "Cabanyal — fishermen's barrio", desc: "One of the most undervisited barrios in Valencia, and one of the most rewarding on foot. The Cabanyal grew up as a separate village of fishermen and its streets still follow the old layout — long straight lines running parallel to the sea. The domestic architecture is extraordinary: modest 19th-century homes covered in ceramic tiles in every colour and pattern, many with Art Nouveau details. Walk from Plaça del Doctor Lluís Oliag to the beach, zigzagging through Carrer de la Reina, Carrer de Josep Benlliure and Carrer del Progrés. Stop for coffee at any of the old fishing bars on the side streets. Best on a weekday morning.", address: "Start: Carrer de la Reina (from the Tram line 4)" },
+      { name: "Sorolla's Valencia", desc: "Joaquín Sorolla spent his formative years walking the same streets and beaches you walk today. Start at his birthplace near the cathedral (a ceramic plaque marks the spot on Carrer de la Llotja). Walk east to Plaça de la Reina, down through El Carmen to the old town market, then take the tram to Malvarrosa beach. Stand on the sand and look back at the city the way he would have — flat light in the morning, harsh and bright at midday, golden at dusk. Bring a book of his paintings. The light is exactly right.", address: "Start: Carrer de la Llotja (near La Lonja)" },
+      { name: "Modernisme & the market district", desc: "A compact walk through Valencia's finest early-20th century architecture. Start at Estació del Nord (1917, the masterwork of Demetrio Ribes — look at every detail of the ceramic decoration inside the main hall). Walk to the Mercat Central (1928, extraordinary Art Nouveau ironwork and stained glass — go inside even if you're not buying). Continue to La Lonja de la Seda across the street. Then up through Plaça del Mercat and north to the Palau de les Comunicacions (now City Hall) on Plaça del Ajuntament. About 40 minutes of walking; bring an hour if you stop inside the buildings.", address: "Start: Estació del Nord, Carrer de Xàtiva" },
+      { name: "The three bridges walk", desc: "Valencia has 18 bridges crossing the Turia garden, each from a different era. This walk follows three of the most beautiful. Start at Pont de Serrans (14th century, stone, the oldest on the route). Walk east along the garden path to Pont de la Trinitat (15th century, also Gothic, with decorated parapets). Continue to Pont del Real (16th century, flanked by statues of the four Valencian kings). Each crossing takes about 20 minutes of walking. The garden below is at its best in spring (jacarandas in bloom) and autumn (cool enough to sit by the water).", address: "Start: Pont de Serrans, Jardí del Turia" },
+    ],
+  },
 };
 
 const CARD_SVGS = {
@@ -219,6 +248,12 @@ culture: (
     height:"100%",objectFit:"cover",filter:"brightness(0.85)"}}
     alt=""
   />
+  ),
+  walks: (
+    <div style={{position:"absolute",inset:0,background:"linear-gradient(135deg, #C8864A 0%, #8B5E3C 40%, #4A3728 100%)",opacity:0.9}} />
+  ),
+  bsides: (
+    <div style={{position:"absolute",inset:0,background:"linear-gradient(135deg, #2C2A5E 0%, #4A3A7A 50%, #1A1830 100%)",opacity:0.9}} />
   ),
 };
 
@@ -454,7 +489,6 @@ export default function App() {
           <div className="header-eyebrow">Your insider guide</div>
           <div className="header-title">Valencia</div>
           <div className="header-taronja">la ciutat de la taronja</div>
-          <div className="header-sub">What to eat, see & do while visiting our beatiful city</div>
           <div style={{marginTop:20,marginLeft:-20,marginRight:-20,marginBottom:-28}}>
             <MosaicStrip height={20} />
           </div>
