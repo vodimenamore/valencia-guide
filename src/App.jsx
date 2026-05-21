@@ -157,12 +157,12 @@ const CARD_SVGS = {
   ),
 history: (
   <img
-    src="https://res.cloudinary.com/dntf51gis/image/upload/Gemini_Generated_Image_fsadndfsadndfsad_lee2xg"
+    src="https://res.cloudinary.com/dntf51gis/image/upload/Gemini_Generated_Image_fsadndfsadndfsad_lee2xgn"
     style={{position:"absolute",inset:0,width:"100%",
     height:"100%",objectFit:"cover",filter:"brightness(0.45)"}}
     alt=""
   />
-),,
+),
   culture: (
     <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" style={{position:"absolute",inset:0,width:"100%",height:"100%"}}>
       <rect width="200" height="140" fill="#5C1800"/>
