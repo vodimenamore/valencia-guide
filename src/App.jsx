@@ -157,7 +157,7 @@ const CARD_SVGS = {
   ),
 history: (
   <img
-    src="https://res.cloudinary.com/dntf51gis/image/upload/Gemini_Generated_Image_fsadndfsadndfsad_lee2xgn"
+    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779361993/Screenshot_2026-05-21_at_10.28.33_duzytk.png"
     style={{position:"absolute",inset:0,width:"100%",
     height:"100%",objectFit:"cover",filter:"brightness(0.45)"}}
     alt=""
