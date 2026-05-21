@@ -1,16 +1,16 @@
 import { useState, useEffect, useCallback } from "react";
 
 const SECTIONS = [
-  { id: "food",     label: "Food & drink",            desc: "What a local actually eats",   color: "#CC4A00", bg: "#FFF2EA"},
   { id: "history",  label: "History & architecture",  desc: "2,000 years in one city",      color: "#534AB7", bg: "#EEEDFE" },
   { id: "culture",  label: "Culture & events",        desc: "Festivals, art & nightlife",   color: "#CC4A00", bg: "#FFF2EA" },
-  { id: "beaches",  label: "Beaches & outdoors",      desc: "Sun, sand & the Turia garden", color: "#185FA5", bg: "#E6F1FB" },
-  { id: "practical",label: "Practical tips",          desc: "How to move like a local",     color: "#5F5E5A", bg: "#F1EFE8" },
-  { id: "shopping", label: "Shopping & markets",      desc: "What to buy & where",          color: "#993556", bg: "#FBEAF0" },
+  { id: "food",     label: "Food & drink",            desc: "What a local actually eats",   color: "#CC4A00", bg: "#FFF2EA"},
   { id: "nightlife",label: "Bars & nightlife",        desc: "Rooftops, clubs & late nights", color: "#2A1A4A", bg: "#EEEAF8" },
-  { id: "kids",     label: "Kids & fun",              desc: "Valencia with little ones",    color: "#185FA5", bg: "#E6F1FB" },
+  { id: "beaches",  label: "Beaches & outdoors",      desc: "Sun, sand & the Turia garden", color: "#185FA5", bg: "#E6F1FB" },
   { id: "flora",    label: "Flora & trees",           desc: "The city's living landmarks",  color: "#2D6A2D", bg: "#E8F5E8" },
+  { id: "kids",     label: "Kids & fun",              desc: "Valencia with little ones",    color: "#185FA5", bg: "#E6F1FB" },
   { id: "sports",   label: "Sports events",           desc: "Football, basketball & more",  color: "#CC4A00", bg: "#FFF2EA" },
+  { id: "shopping", label: "Shopping & markets",      desc: "What to buy & where",          color: "#993556", bg: "#FBEAF0" },
+  { id: "practical",label: "Practical tips",          desc: "How to move like a local",     color: "#5F5E5A", bg: "#F1EFE8" },
 ];
 
 const CONTENT = {
@@ -147,6 +147,14 @@ food: (
     alt=""
   />
 ),
+  nightlife: (
+     <img
+    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779377918/Gemini_Generated_Image_wevd3dwevd3dwevd_uua7u2.png"
+    style={{position:"absolute",inset:0,width:"100%",
+    height:"100%",objectFit:"cover",filter:"brightness(0.85)"}}
+    alt=""
+  />
+  ),
 history: (
   <img
     src="https://res.cloudinary.com/dntf51gis/image/upload/v1779374065/Gemini_Generated_Image_ui7t96ui7t96ui7t_aaegwy.png"
@@ -171,6 +179,14 @@ culture: (
     alt=""
   />
   ),
+    kids: (
+     <img
+    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779377322/Gemini_Generated_Image_m2s62mm2s62mm2s6_ezvx9b.png"
+    style={{position:"absolute",inset:0,width:"100%",
+    height:"100%",objectFit:"cover",filter:"brightness(0.85)"}}
+    alt=""
+  />
+  ),
   practical: (
       <img
     src="https://res.cloudinary.com/dntf51gis/image/upload/v1779375209/Gemini_Generated_Image_17tfra17tfra17tf_r2jxx6.png"
@@ -187,22 +203,7 @@ culture: (
     alt=""
   />
   ),
-  nightlife: (
-     <img
-    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779377918/Gemini_Generated_Image_wevd3dwevd3dwevd_uua7u2.png"
-    style={{position:"absolute",inset:0,width:"100%",
-    height:"100%",objectFit:"cover",filter:"brightness(0.85)"}}
-    alt=""
-  />
-  ),
-  kids: (
-     <img
-    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779377322/Gemini_Generated_Image_m2s62mm2s62mm2s6_ezvx9b.png"
-    style={{position:"absolute",inset:0,width:"100%",
-    height:"100%",objectFit:"cover",filter:"brightness(0.85)"}}
-    alt=""
-  />
-  ),
+
   flora: (
     <img
     src="https://res.cloudinary.com/dntf51gis/image/upload/v1779378094/Gemini_Generated_Image_7xxik47xxik47xxi_aplppd.png"
