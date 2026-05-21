@@ -429,12 +429,26 @@ function NowBar() {
 
 export default function App() {
   const [active, setActive] = useState(null);
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+  useEffect(() => {
+    const on = () => setIsOnline(true);
+    const off = () => setIsOnline(false);
+    window.addEventListener('online', on);
+    window.addEventListener('offline', off);
+    return () => { window.removeEventListener('online', on); window.removeEventListener('offline', off); };
+  }, []);
 
   const activeSection = active ? SECTIONS.find(s => s.id === active) : null;
 
   return (
     <>
       <style>{styles}</style>
+      {!isOnline && (
+        <div style={{position:'fixed',top:0,left:'50%',transform:'translateX(-50%)',background:'#333',color:'#fff',fontSize:13,padding:'6px 16px',borderRadius:'0 0 10px 10px',zIndex:9999,fontFamily:'DM Sans, sans-serif'}}>
+          Offline — content still available
+        </div>
+      )}
       <div className="app">
         <div className="header">
           <div className="header-eyebrow">Your insider guide</div>
