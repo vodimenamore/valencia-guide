@@ -139,22 +139,14 @@ const CONTENT = {
 };
 
 const CARD_SVGS = {
-  food: (
-    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" style={{position:"absolute",inset:0,width:"100%",height:"100%"}}>
-      <rect width="200" height="140" fill="#7A2800"/>
-      <rect width="200" height="140" fill="#CC4A00" opacity="0.7"/>
-      <ellipse cx="100" cy="95" rx="70" ry="22" fill="#FF8C42" opacity="0.5"/>
-      <ellipse cx="100" cy="92" rx="58" ry="18" fill="#E65C00" opacity="0.6"/>
-      <rect x="60" y="72" width="80" height="8" rx="4" fill="#FF6C0C" opacity="0.5"/>
-      <circle cx="80" cy="76" r="6" fill="#FFD166" opacity="0.7"/>
-      <circle cx="100" cy="74" r="6" fill="#FFD166" opacity="0.7"/>
-      <circle cx="120" cy="76" r="6" fill="#FFD166" opacity="0.7"/>
-      <rect x="78" y="40" width="44" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
-      <rect x="86" y="50" width="28" height="4" rx="2" fill="rgba(255,255,255,0.1)"/>
-      <circle cx="30" cy="30" r="20" fill="rgba(255,255,255,0.04)"/>
-      <circle cx="170" cy="110" r="28" fill="rgba(0,0,0,0.1)"/>
-    </svg>
-  ),
+food: (
+  <img
+    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779362652/Screenshot_2026-05-21_at_13.23.54_f1ohpe.png"
+    style={{position:"absolute",inset:0,width:"100%",
+    height:"100%",objectFit:"cover",filter:"brightness(0.45)"}}
+    alt=""
+  />
+),
 history: (
   <img
     src="https://res.cloudinary.com/dntf51gis/image/upload/v1779361993/Screenshot_2026-05-21_at_10.28.33_duzytk.png"
