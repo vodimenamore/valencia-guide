@@ -1,17 +1,17 @@
 import { useState, useEffect, useCallback } from "react";
 
 const SECTIONS = [
-  { id: "history",  label: "History & architecture",  desc: "2,000 years in one city",      color: "#534AB7", bg: "#EEEDFE" },
-  { id: "culture",  label: "Culture & events",        desc: "Festivals, art & nightlife",   color: "#CC4A00", bg: "#FFF2EA" },
-  { id: "food",     label: "Food & drink",            desc: "What a local actually eats",   color: "#CC4A00", bg: "#FFF2EA"},
-  { id: "nightlife",label: "Bars & nightlife",        desc: "Rooftops, clubs & late nights", color: "#2A1A4A", bg: "#EEEAF8" },
-  { id: "beaches",  label: "Beaches & outdoors",      desc: "Sun, sand & the Turia garden", color: "#185FA5", bg: "#E6F1FB" },
-  { id: "flora",    label: "Flora & trees",           desc: "The city's living landmarks",  color: "#2D6A2D", bg: "#E8F5E8" },
-  { id: "kids",     label: "Kids & fun",              desc: "Valencia with little ones",    color: "#185FA5", bg: "#E6F1FB" },
-  { id: "sports",   label: "Sports events",           desc: "Football, basketball & more",  color: "#CC4A00", bg: "#FFF2EA" },
-  { id: "shopping", label: "Shopping & markets",      desc: "What to buy & where",          color: "#993556", bg: "#FBEAF0" },
-  { id: "practical",label: "Practical tips",          desc: "How to move like a local",     color: "#5F5E5A", bg: "#F1EFE8" },
-  { id: "walks",    label: "Curated city walks",      desc: "The best routes on foot",      color: "#7A4E2D", bg: "#FAF0E6" },
+  { id: "history",  label: "Old Stones, New Stories",  desc: "2,000 years in one city",      color: "#534AB7", bg: "#EEEDFE" },
+  { id: "culture",  label: "Fiesta & Fervor",        desc: "Festivals, art & nightlife",   color: "#CC4A00", bg: "#FFF2EA" },
+  { id: "food",     label: "Beyond Paella",            desc: "What a local actually eats",   color: "#f5ed0b", bg: "#FFF2EA"},
+  { id: "nightlife",label: "After Dark",        desc: "Rooftops, clubs & late nights", color: "#2A1A4A", bg: "#EEEAF8" },
+  { id: "beaches",  label: "Coastal Currents",      desc: "Sun, sand & the Turia garden", color: "#185FA5", bg: "#E6F1FB" },
+  { id: "flora",    label: "The Green Soul",           desc: "The city's living landmarks",  color: "#2D6A2D", bg: "#E8F5E8" },
+  { id: "kids",     label: "Little Adventurers",              desc: "Valencia with little ones",    color: "#a45510", bg: "#E6F1FB" },
+  { id: "sports",   label: "Game On",           desc: "Football, basketball & more",  color: "#CC4A00", bg: "#FFF2EA" },
+  { id: "shopping", label: "Bags & Bazaars",      desc: "What to buy & where",          color: "#993556", bg: "#FBEAF0" },
+  { id: "practical",label: "Street Smarts",          desc: "How to move like a local",     color: "#5F5E5A", bg: "#F1EFE8" },
+  { id: "walks",    label: "Stroll-encia",      desc: "The best routes on foot",      color: "#7A4E2D", bg: "#FAF0E6" },
   { id: "bsides",   label: "The B-Sides",             desc: "Everything else worth knowing", color: "#3A3560", bg: "#EEEDF8" },
 ];
 
@@ -435,9 +435,9 @@ function NowBar() {
       const data = await res.json();
       const textBlocks = (data.content || []).filter(b => b.type === "text").map(b => b.text).join(" ").trim();
       const clean = textBlocks.replace(/^["']|["']$/g, "").trim();
-      setText(clean || "Valencia is alive:check local listings for today's events. - COMING SOON");
+      setText(clean || "COMING SOON");
     } catch {
-      setText("Valencia is alive — check local listings for today's events.");
+      setText("coming soon (mañana)");
     } finally {
       setLoading(false);
     }
