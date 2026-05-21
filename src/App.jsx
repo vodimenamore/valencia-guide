@@ -155,88 +155,14 @@ const CARD_SVGS = {
       <circle cx="170" cy="110" r="28" fill="rgba(0,0,0,0.1)"/>
     </svg>
   ),
-  history: (
-    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" style={{position:"absolute",inset:0,width:"100%",height:"100%"}}>
-      {/* night sky gradient */}
-      <defs>
-        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#0D1B5E"/>
-          <stop offset="100%" stopColor="#1A2F8A"/>
-        </linearGradient>
-        <linearGradient id="tower" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#C8A84B"/>
-          <stop offset="100%" stopColor="#A07830"/>
-        </linearGradient>
-        <radialGradient id="moon" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#E8D890" stopOpacity="0.9"/>
-          <stop offset="60%" stopColor="#C8B860" stopOpacity="0.5"/>
-          <stop offset="100%" stopColor="#A09040" stopOpacity="0"/>
-        </radialGradient>
-      </defs>
-      <rect width="200" height="140" fill="url(#sky)"/>
-      {/* moon glow */}
-      <circle cx="155" cy="28" r="22" fill="url(#moon)" opacity="0.6"/>
-      <circle cx="155" cy="28" r="13" fill="#E8D890" opacity="0.35"/>
-      <circle cx="155" cy="28" r="9" fill="#F5ECA0" opacity="0.4"/>
-      {/* ground / reflection pool */}
-      <rect x="0" y="108" width="200" height="32" fill="#101840" opacity="0.9"/>
-      <ellipse cx="100" cy="110" rx="60" ry="5" fill="#1A2878" opacity="0.5"/>
-      {/* left palm tree */}
-      <rect x="18" y="62" width="4" height="50" fill="#0D2010"/>
-      <ellipse cx="20" cy="60" rx="16" ry="10" fill="#1A4020" opacity="0.9"/>
-      <ellipse cx="10" cy="65" rx="10" ry="6" fill="#1A4020" opacity="0.7"/>
-      <ellipse cx="30" cy="63" rx="10" ry="6" fill="#0D3015" opacity="0.8"/>
-      {/* right palm trees */}
-      <rect x="168" y="55" width="4" height="55" fill="#0D2010"/>
-      <ellipse cx="170" cy="53" rx="18" ry="11" fill="#1A5025" opacity="0.9"/>
-      <ellipse cx="158" cy="60" rx="11" ry="7" fill="#1A4020" opacity="0.7"/>
-      <ellipse cx="182" cy="58" rx="11" ry="7" fill="#0D3015" opacity="0.8"/>
-      <rect x="182" y="65" width="3" height="45" fill="#0D2010"/>
-      <ellipse cx="183" cy="63" rx="12" ry="8" fill="#1A4020" opacity="0.8"/>
-      {/* building right side */}
-      <rect x="148" y="72" width="30" height="40" fill="#9A7830" opacity="0.7"/>
-      <rect x="152" y="76" width="6" height="8" fill="#0D1B5E" opacity="0.5"/>
-      <rect x="162" y="76" width="6" height="8" fill="#0D1B5E" opacity="0.5"/>
-      <rect x="152" y="88" width="6" height="8" fill="#0D1B5E" opacity="0.5"/>
-      <rect x="162" y="88" width="6" height="8" fill="#0D1B5E" opacity="0.5"/>
-      {/* main tower body */}
-      <rect x="52" y="50" width="96" height="70" fill="url(#tower)"/>
-      {/* left tower */}
-      <rect x="48" y="36" width="36" height="84" fill="#C8A84B"/>
-      <rect x="46" y="30" width="40" height="10" fill="#B89838"/>
-      {/* left tower battlements */}
-      <rect x="46" y="24" width="8" height="8" fill="#B89838"/>
-      <rect x="58" y="24" width="8" height="8" fill="#B89838"/>
-      <rect x="70" y="24" width="8" height="8" fill="#B89838"/>
-      {/* right tower */}
-      <rect x="116" y="36" width="36" height="84" fill="#C8A84B"/>
-      <rect x="114" y="30" width="40" height="10" fill="#B89838"/>
-      {/* right tower battlements */}
-      <rect x="114" y="24" width="8" height="8" fill="#B89838"/>
-      <rect x="126" y="24" width="8" height="8" fill="#B89838"/>
-      <rect x="138" y="24" width="8" height="8" fill="#B89838"/>
-      {/* flag pole on left tower */}
-      <line x1="67" y1="24" x2="67" y2="10" stroke="#888" strokeWidth="1"/>
-      {/* Valencian flag — red and yellow stripes */}
-      <rect x="67" y="10" width="14" height="8" fill="#FFCC00"/>
-      <rect x="67" y="10" width="3.5" height="8" fill="#CC0000"/>
-      <rect x="74.5" y="10" width="3.5" height="8" fill="#CC0000"/>
-      {/* central arch gate */}
-      <rect x="82" y="75" width="36" height="45" fill="#0D1B5E" opacity="0.8"/>
-      <path d="M82 75 Q100 60 118 75" fill="#1A2878" opacity="0.9"/>
-      {/* decorative band across centre */}
-      <rect x="52" y="68" width="96" height="8" fill="#906020" opacity="0.6"/>
-      <path d="M56 72 Q60 68 64 72 Q68 68 72 72 Q76 68 80 72 Q84 68 88 72 Q92 68 96 72 Q100 68 104 72 Q108 68 112 72 Q116 68 120 72 Q124 68 128 72 Q132 68 136 72 Q140 68 144 72" fill="none" stroke="#C8A84B" strokeWidth="1.5" opacity="0.7"/>
-      {/* arched windows left tower */}
-      <rect x="56" y="50" width="10" height="12" rx="5" fill="#0D1B5E" opacity="0.7"/>
-      <rect x="72" y="50" width="10" height="12" rx="5" fill="#0D1B5E" opacity="0.7"/>
-      {/* arched windows right tower */}
-      <rect x="120" y="50" width="10" height="12" rx="5" fill="#0D1B5E" opacity="0.7"/>
-      <rect x="136" y="50" width="10" height="12" rx="5" fill="#0D1B5E" opacity="0.7"/>
-      {/* shadow overlay at bottom */}
-      <rect x="0" y="100" width="200" height="40" fill="#0A1238" opacity="0.5"/>
-    </svg>
-  ),
+history: (
+  <img
+    src="https://res.cloudinary.com/dntf51gis/image/upload/Gemini_Generated_Image_fsadndfsadndfsad_lee2xg"
+    style={{position:"absolute",inset:0,width:"100%",
+    height:"100%",objectFit:"cover",filter:"brightness(0.45)"}}
+    alt=""
+  />
+),,
   culture: (
     <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" style={{position:"absolute",inset:0,width:"100%",height:"100%"}}>
       <rect width="200" height="140" fill="#5C1800"/>
