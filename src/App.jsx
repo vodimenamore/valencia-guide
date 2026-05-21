@@ -222,7 +222,7 @@ culture: (
   ),
 };
 
-const MosaicStrip = ({ height = 18, opacity = 1 }) => (
+const MosaicStrip = ({ height = 14, opacity = 1 }) => (
   <svg viewBox="0 0 400 18" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
     style={{ display:'block', width:'100%', height, opacity }}>
     {/* row of irregular mosaic patches with dark grout lines between */}
@@ -301,7 +301,7 @@ const styles = `
   .nav-btn.active { background: var(--taronja-dark); color: #fff; border-color: var(--taronja-dark); }
   .content { padding: 0 0 80px; }
   .section-cards { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; padding: 16px 20px; }
-  .sec-card { position: relative; border-radius: 14px; overflow: hidden; cursor: pointer; transition: transform 0.15s; height: 140px; border: 1px solid var(--border); }
+  .sec-card { position: relative; border-radius: 14px; overflow: hidden; cursor: pointer; transition: transform 0.15s; height: 140px; border: 3px solid transparent; }
   .sec-card:active { transform: scale(0.97); }
   .sec-card-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
   .sec-card-body { position: relative; z-index: 1; padding: 12px; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0) 100%); border-radius: 14px; }
@@ -344,7 +344,7 @@ function SectionView({ section, onBack }) {
           <p>{section.desc}</p>
         </div>
       </div>
-      <MosaicStrip height={16} />
+      <MosaicStrip height={18} />
       <div className="insider-box">
         <span className="insider-icon">💬</span>
         <div>
@@ -442,7 +442,7 @@ export default function App() {
           <div className="header-taronja">la ciutat de la taronja</div>
           <div className="header-sub">What to eat, see & do while visiting our beatiful city</div>
           <div style={{marginTop:20,marginLeft:-20,marginRight:-20,marginBottom:-28}}>
-            <MosaicStrip height={22} />
+            <MosaicStrip height={20} />
           </div>
         </div>
 
@@ -461,16 +461,16 @@ export default function App() {
               <div className="section-cards">
                 {SECTIONS.map(s => (
                   <div key={s.id} className="sec-card" onClick={() => setActive(s.id)}>
-                    {CARD_SVGS[s.id]}
-                    <div className="sec-card-body">
-                      <div className="sec-title">{s.label}</div>
-                      <div className="sec-sub">{s.desc}</div>
-                      <div className="sec-badge">{CONTENT[s.id].items.length} picks</div>
-                    </div>
-                    <div style={{position:'absolute',bottom:0,left:0,right:0}}>
-                      <MosaicStrip height={8} opacity={0.85}/>
-                    </div>
-                  </div>
+  {CARD_SVGS[s.id]}
+  <div className="sec-card-body">
+    <div className="sec-title">{s.label}</div>
+    <div className="sec-sub">{s.desc}</div>
+    <div className="sec-badge">{CONTENT[s.id].items.length} picks</div>
+  </div>
+  <div style={{position:'absolute',bottom:0,left:0,right:0,zIndex:10}}>
+    <MosaicStrip height={10} opacity={1}/>
+  </div>
+</div>
                 ))}
               </div>
             </>
