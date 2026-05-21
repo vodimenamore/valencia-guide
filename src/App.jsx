@@ -5,7 +5,7 @@ const SECTIONS = [
   { id: "culture",  label: "Fiesta & Fervor",        desc: "Festivals, art & nightlife",   color: "#CC4A00", bg: "#FFF2EA" },
   { id: "food",     label: "Beyond Paella",            desc: "What a local actually eats",   color: "#f5ed0b", bg: "#FFF2EA"},
   { id: "nightlife",label: "After Dark",        desc: "Rooftops, clubs & late nights", color: "#2A1A4A", bg: "#EEEAF8" },
-  { id: "beaches",  label: "Coastal Currents",      desc: "Sun, sand & the Turia garden", color: "#185FA5", bg: "#E6F1FB" },
+  { id: "beaches",  label: "Shore & Explore",      desc: "Sun, sand & the Turia garden", color: "#185FA5", bg: "#E6F1FB" },
   { id: "flora",    label: "The Green Soul",           desc: "The city's living landmarks",  color: "#2D6A2D", bg: "#E8F5E8" },
   { id: "kids",     label: "Little Adventurers",              desc: "Valencia with little ones",    color: "#a45510", bg: "#E6F1FB" },
   { id: "sports",   label: "Game On",           desc: "Football, basketball & more",  color: "#CC4A00", bg: "#FFF2EA" },
