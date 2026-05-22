@@ -514,9 +514,9 @@ function NowBar() {
       const data = await res.json();
       const textBlocks = (data.content || []).filter(b => b.type === "text").map(b => b.text).join(" ").trim();
       const clean = textBlocks.replace(/^["']|["']$/g, "").trim();
-      setText(clean || "...coming soon (mañana)");
+      setText(clean || "coming soon (mañana)");
     } catch {
-      setText("...coming soon (mañana)");
+      setText("coming soon (mañana)");
     } finally {
       setLoading(false);
     }
