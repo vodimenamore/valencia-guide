@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 
 const SECTIONS = [
   { id: "history",  label: "Past Perfect",  desc: "History, monuments & architecture",      color: "#534AB7", bg: "#EEEDFE" },
@@ -266,6 +266,53 @@ culture: (
   ),
 };
 
+function parseGoogleMapsUrl(raw) {
+  const s = raw.trim().replace(/\+/g, ' '); // + is encoded space in URLs
+  // @lat,lng (standard share URL)
+  const atMatch = s.match(/@(-?\d+\.?\d+),\s*(-?\d+\.?\d+)/);
+  if (atMatch) return { lat: parseFloat(atMatch[1]), lng: parseFloat(atMatch[2]) };
+  // /maps/search/lat,lng (short-URL redirect destination)
+  const searchMatch = s.match(/maps\/search\/(-?\d+\.?\d+),\s*(-?\d+\.?\d+)/);
+  if (searchMatch) return { lat: parseFloat(searchMatch[1]), lng: parseFloat(searchMatch[2]) };
+  // ?q=lat,lng or &q=lat,lng
+  const qMatch = s.match(/[?&]q=(-?\d+\.?\d+),\s*(-?\d+\.?\d+)/);
+  if (qMatch) return { lat: parseFloat(qMatch[1]), lng: parseFloat(qMatch[2]) };
+  // plain "lat, lng"
+  const plainMatch = s.match(/^(-?\d+\.?\d+),\s*(-?\d+\.?\d+)$/);
+  if (plainMatch) return { lat: parseFloat(plainMatch[1]), lng: parseFloat(plainMatch[2]) };
+  return null;
+}
+
+function extractCoordsFromText(text) {
+  // Decode percent-encoded chars before matching so %2B→+ and %2C→, are handled
+  const s = text.replace(/%2B/gi, '+').replace(/%2C/gi, ',').replace(/\+/g, ' ');
+  // @lat,lng (canonical URLs, og:url)
+  const atMatch = s.match(/@(-?\d{1,3}\.\d{4,}),\s*(-?\d{1,3}\.\d{4,})/);
+  if (atMatch) return { lat: parseFloat(atMatch[1]), lng: parseFloat(atMatch[2]) };
+  // /maps/search/lat,lng (short-URL redirect destination)
+  const searchMatch = s.match(/\/maps\/search\/(-?\d{1,3}\.\d{4,}),\s*(-?\d{1,3}\.\d{4,})/);
+  if (searchMatch) return { lat: parseFloat(searchMatch[1]), lng: parseFloat(searchMatch[2]) };
+  // q=lat,lng
+  const qMatch = s.match(/[?&]q=(-?\d{1,3}\.\d{4,}),\s*(-?\d{1,3}\.\d{4,})/);
+  if (qMatch) return { lat: parseFloat(qMatch[1]), lng: parseFloat(qMatch[2]) };
+  // ll=lat,lng
+  const llMatch = s.match(/ll=(-?\d{1,3}\.\d{4,}),(-?\d{1,3}\.\d{4,})/);
+  if (llMatch) return { lat: parseFloat(llMatch[1]), lng: parseFloat(llMatch[2]) };
+  return null;
+}
+
+function haversineKm(lat1, lng1, lat2, lng2) {
+  const R = 6371;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLng = (lng2 - lng1) * Math.PI / 180;
+  const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLng/2)**2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
+
+function fmtDist(km) {
+  return km < 1 ? `${Math.round(km * 1000)} m` : `${km.toFixed(1)} km`;
+}
+
 const MosaicStrip = ({ height = 14, opacity = 1 }) => (
   <svg viewBox="0 0 400 18" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
     style={{ display:'block', width:'100%', height, opacity }}>
@@ -369,6 +416,22 @@ const styles = `
   .item-addr:hover { text-decoration: underline; }
   .loading-spinner { display: inline-block; width: 12px; height: 12px; border: 1.5px solid var(--taronja-light); border-top-color: var(--taronja-mid); border-radius: 50%; animation: spin 0.8s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
+  .location-bar { background: #fff; border-bottom: 1px solid var(--border); padding: 10px 20px 12px; }
+  .location-input-wrap { display: flex; align-items: center; gap: 8px; background: var(--cream); border: 1.5px solid var(--border); border-radius: 10px; padding: 8px 10px; transition: border-color 0.15s; }
+  .location-input-wrap.has-error { border-color: #E05252; }
+  .location-input-wrap.has-location { border-color: var(--taronja-mid); }
+  .location-input { flex: 1; border: none; background: none; font-size: 12px; font-family: inherit; color: var(--ink); outline: none; min-width: 0; }
+  .location-input::placeholder { color: var(--muted); }
+  .location-clear { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 14px; padding: 0 2px; flex-shrink: 0; line-height: 1; }
+  .location-sub { font-size: 11px; margin-top: 6px; padding: 0 2px; }
+  .location-sub.active { color: var(--taronja-mid); }
+  .location-sub.error { color: #E05252; }
+  .nearby-view { animation: slideIn 0.2s ease; padding-bottom: 80px; }
+  .nearby-header { padding: 14px 20px 10px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); }
+  .nearby-title { font-size: 13px; font-weight: 500; color: var(--ink); }
+  .nearby-count { font-size: 11px; color: var(--muted); }
+  .dist-badge { min-width: 42px; text-align: center; padding: 4px 0; background: var(--taronja-light); border-radius: 8px; font-size: 10px; font-weight: 600; color: var(--taronja-mid); flex-shrink: 0; margin-top: 2px; }
+  .section-tag { font-size: 9px; font-weight: 600; padding: 2px 6px; border-radius: 8px; flex-shrink: 0; white-space: nowrap; letter-spacing: 0.02em; }
 `;
 
 
@@ -470,6 +533,11 @@ function NowBar() {
 export default function App() {
   const [active, setActive] = useState(null);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [locationInput, setLocationInput] = useState('');
+  const [userLocation, setUserLocation] = useState(null);
+  const [locationError, setLocationError] = useState(false);
+  const [locationLoading, setLocationLoading] = useState(false);
+  const resolveToken = useRef(0);
 
   useEffect(() => {
     const on = () => setIsOnline(true);
@@ -478,6 +546,58 @@ export default function App() {
     window.addEventListener('offline', off);
     return () => { window.removeEventListener('online', on); window.removeEventListener('offline', off); };
   }, []);
+
+  const handleLocationInput = useCallback(async (val) => {
+    setLocationInput(val);
+    setLocationError(false);
+    setLocationLoading(false);
+    if (!val.trim()) { setUserLocation(null); return; }
+
+    // Try parsing directly first (works for full Google Maps URLs with @lat,lng)
+    const loc = parseGoogleMapsUrl(val);
+    if (loc) { setUserLocation(loc); return; }
+
+    // Short URLs (maps.app.goo.gl etc.) need redirect resolution via proxy
+    if (val.startsWith('http')) {
+      const token = ++resolveToken.current;
+      setLocationLoading(true);
+      setUserLocation(null);
+      try {
+        const res = await fetch(`https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent(val)}`);
+        if (token !== resolveToken.current) return;
+        const text = await res.text();
+        if (token !== resolveToken.current) return;
+        // The proxy follows redirects — look for coords in the final page HTML
+        const resolved = extractCoordsFromText(text);
+        if (resolved) { setUserLocation(resolved); setLocationLoading(false); return; }
+      } catch { if (token !== resolveToken.current) return; }
+      setLocationLoading(false);
+      setLocationError(true);
+      return;
+    }
+
+    if (val.length > 10) setLocationError(true);
+  }, []);
+
+  const clearLocation = () => {
+    setLocationInput(''); setUserLocation(null);
+    setLocationError(false); setLocationLoading(false);
+    resolveToken.current++;
+  };
+
+  const nearbyItems = useMemo(() => {
+    if (!userLocation) return [];
+    return SECTIONS.flatMap(s =>
+      CONTENT[s.id].items
+        .filter(item => item.lat && item.lng)
+        .map(item => ({
+          ...item,
+          sectionLabel: s.label,
+          sectionColor: s.color,
+          distKm: haversineKm(userLocation.lat, userLocation.lng, item.lat, item.lng),
+        }))
+    ).sort((a, b) => a.distKm - b.distKm);
+  }, [userLocation]);
 
   const activeSection = active ? SECTIONS.find(s => s.id === active) : null;
 
@@ -501,25 +621,68 @@ export default function App() {
 
         <NowBar />
 
+        {!activeSection && (
+          <div className="location-bar">
+            <div className={`location-input-wrap${userLocation ? ' has-location' : locationError ? ' has-error' : ''}`}>
+              <span style={{fontSize:14, flexShrink:0}}>📍</span>
+              <input
+                className="location-input"
+                type="text"
+                placeholder="Paste a Google Maps link to see what's nearby"
+                value={locationInput}
+                onChange={e => handleLocationInput(e.target.value)}
+              />
+              {locationInput && <button className="location-clear" onClick={clearLocation}>✕</button>}
+            </div>
+            {locationLoading && <div className="location-sub active">Exploring locations…</div>}
+            {userLocation && !locationLoading && <div className="location-sub active">{nearbyItems.length} places sorted by distance from your pin</div>}
+            {locationError && <div className="location-sub error">Couldn't read location — try a Google Maps share link</div>}
+          </div>
+        )}
+
         <div className="content">
           {!activeSection ? (
-            <>
+            userLocation ? (
+              <div className="nearby-view">
+                <div className="nearby-header">
+                  <span className="nearby-title">Nearest first</span>
+                  <span className="nearby-count">{nearbyItems.length} places</span>
+                </div>
+                {nearbyItems.map((item, i) => (
+                  <div key={i} className="item-row">
+                    <div className="dist-badge">{fmtDist(item.distKm)}</div>
+                    <div style={{minWidth:0}}>
+                      <div style={{display:'flex', alignItems:'center', gap:6, marginBottom:3, flexWrap:'wrap'}}>
+                        <div className="item-name" style={{margin:0}}>{item.name}</div>
+                        <span className="section-tag" style={{background: item.sectionColor + '22', color: item.sectionColor}}>{item.sectionLabel}</span>
+                      </div>
+                      <div className="item-desc" style={{display:'-webkit-box', WebkitLineClamp:2, WebkitBoxOrient:'vertical', overflow:'hidden'}}>{item.desc}</div>
+                      {item.address && (
+                        <a className="item-addr" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.address + ", Valencia, Spain")}`} target="_blank" rel="noopener noreferrer">
+                          {item.address}
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
               <div className="section-cards">
                 {SECTIONS.map(s => (
                   <div key={s.id} className="sec-card" onClick={() => setActive(s.id)}>
-  {CARD_SVGS[s.id]}
-  <div className="sec-card-body">
-    <div className="sec-title">{s.label}</div>
-    <div className="sec-sub">{s.desc}</div>
-    <div className="sec-badge">{CONTENT[s.id].items.length} picks</div>
-  </div>
-  <div style={{position:'absolute',bottom:0,left:0,right:0,zIndex:10}}>
-    <MosaicStrip height={10} opacity={1}/>
-  </div>
-</div>
+                    {CARD_SVGS[s.id]}
+                    <div className="sec-card-body">
+                      <div className="sec-title">{s.label}</div>
+                      <div className="sec-sub">{s.desc}</div>
+                      <div className="sec-badge">{CONTENT[s.id].items.length} picks</div>
+                    </div>
+                    <div style={{position:'absolute',bottom:0,left:0,right:0,zIndex:10}}>
+                      <MosaicStrip height={10} opacity={1}/>
+                    </div>
+                  </div>
                 ))}
               </div>
-            </>
+            )
           ) : (
             <SectionView section={activeSection} onBack={() => setActive(null)} />
           )}
