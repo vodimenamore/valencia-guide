@@ -1,17 +1,17 @@
 import { useState, useEffect, useCallback } from "react";
 
 const SECTIONS = [
-  { id: "history",  label: "Old Stones, New Stories",  desc: "2,000 years in one city",      color: "#534AB7", bg: "#EEEDFE" },
+  { id: "history",  label: "Past Perfect",  desc: "History, monuments & architecture",      color: "#534AB7", bg: "#EEEDFE" },
   { id: "food",     label: "Beyond Paella",            desc: "What a local actually eats",   color: "#f5ed0b", bg: "#FFF2EA"},
   { id: "culture",  label: "Fiesta & Fervor",        desc: "Festivals, art & culture",   color: "#CC4A00", bg: "#FFF2EA" },
   { id: "nightlife",label: "After Dark",        desc: "Rooftops, clubs & late nights", color: "#2A1A4A", bg: "#EEEAF8" },
-  { id: "beaches",  label: "Shore & Explore",      desc: "Sun, sand & the Turia garden", color: "#185FA5", bg: "#E6F1FB" },
+  { id: "beaches",  label: "Shore & Explore",      desc: "Sun, sand & outdoors", color: "#185FA5", bg: "#E6F1FB" },
   { id: "flora",    label: "The Green Soul",           desc: "The city's living landmarks",  color: "#2D6A2D", bg: "#E8F5E8" },
-  { id: "kids",     label: "Little Adventurers",              desc: "Valencia with little ones",    color: "#a45510", bg: "#E6F1FB" },
+  { id: "kids",     label: "Little Adventurers",              desc: "Valencia with kids",    color: "#a45510", bg: "#E6F1FB" },
   { id: "sports",   label: "Game On",           desc: "Football, basketball & more",  color: "#CC4A00", bg: "#FFF2EA" },
   { id: "shopping", label: "Bags & Bazaars",      desc: "What to buy & where",          color: "#993556", bg: "#FBEAF0" },
-  { id: "practical",label: "Street Smarts",          desc: "How to move like a local",     color: "#5F5E5A", bg: "#F1EFE8" },
   { id: "walks",    label: "Stroll-encia",      desc: "The best routes on foot",      color: "#7A4E2D", bg: "#FAF0E6" },
+  { id: "practical",label: "Street Smarts",          desc: "How to move like a local",     color: "#5F5E5A", bg: "#F1EFE8" },
   { id: "bsides",   label: "The B-Sides",             desc: "Everything else worth knowing", color: "#3A3560", bg: "#EEEDF8" },
 ];
 
@@ -235,7 +235,7 @@ culture: (
 
   flora: (
     <img
-    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779378094/Gemini_Generated_Image_7xxik47xxik47xxi_aplppd.png"
+    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779440534/Gemini_Generated_Image_nllg9hnllg9hnllg_o8mi3k.png"
     style={{position:"absolute",inset:0,width:"100%",
     height:"100%",objectFit:"cover",filter:"brightness(0.85)"}}
     alt=""
@@ -250,10 +250,20 @@ culture: (
   />
   ),
   walks: (
-    <div style={{position:"absolute",inset:0,background:"linear-gradient(135deg, #C8864A 0%, #8B5E3C 40%, #4A3728 100%)",opacity:0.9}} />
+    <img
+    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779441243/Gemini_Generated_Image_h0708zh0708zh070_siiv1y.png"
+    style={{position:"absolute",inset:0,width:"100%",
+    height:"100%",objectFit:"cover",filter:"brightness(0.85)"}}
+    alt=""
+  />
   ),
   bsides: (
-    <div style={{position:"absolute",inset:0,background:"linear-gradient(135deg, #2C2A5E 0%, #4A3A7A 50%, #1A1830 100%)",opacity:0.9}} />
+     <img
+    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779441592/Gemini_Generated_Image_yeicoayeicoayeic_a5pnoa.png"
+    style={{position:"absolute",inset:0,width:"100%",
+    height:"100%",objectFit:"cover",filter:"brightness(0.85)"}}
+    alt=""
+  />
   ),
 };
 
