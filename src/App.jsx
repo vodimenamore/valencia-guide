@@ -2,8 +2,8 @@ import { useState, useEffect, useCallback } from "react";
 
 const SECTIONS = [
   { id: "history",  label: "Old Stones, New Stories",  desc: "2,000 years in one city",      color: "#534AB7", bg: "#EEEDFE" },
-  { id: "culture",  label: "Fiesta & Fervor",        desc: "Festivals, art & nightlife",   color: "#CC4A00", bg: "#FFF2EA" },
   { id: "food",     label: "Beyond Paella",            desc: "What a local actually eats",   color: "#f5ed0b", bg: "#FFF2EA"},
+  { id: "culture",  label: "Fiesta & Fervor",        desc: "Festivals, art & culture",   color: "#CC4A00", bg: "#FFF2EA" },
   { id: "nightlife",label: "After Dark",        desc: "Rooftops, clubs & late nights", color: "#2A1A4A", bg: "#EEEAF8" },
   { id: "beaches",  label: "Shore & Explore",      desc: "Sun, sand & the Turia garden", color: "#185FA5", bg: "#E6F1FB" },
   { id: "flora",    label: "The Green Soul",           desc: "The city's living landmarks",  color: "#2D6A2D", bg: "#E8F5E8" },
@@ -194,7 +194,7 @@ history: (
 ),
 culture: (
   <img
-    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779374321/Gemini_Generated_Image_fl5isqfl5isqfl5i_gjtd4m.png"
+    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779438163/Gemini_Generated_Image_om8ezom8ezom8ezo_dk7anv.png"
     style={{position:"absolute",inset:0,width:"100%",
     height:"100%",objectFit:"cover",filter:"brightness(0.85)"}}
     alt=""
@@ -202,7 +202,7 @@ culture: (
 ),
   beaches: (
     <img
-    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779374621/Gemini_Generated_Image_agdogoagdogoagdo_qimvgu.png"
+    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779439727/Gemini_Generated_Image_hgv5s6hgv5s6hgv5_vivvpn.png"
     style={{position:"absolute",inset:0,width:"100%",
     height:"100%",objectFit:"cover",filter:"brightness(0.85)"}}
     alt=""
@@ -210,7 +210,7 @@ culture: (
   ),
     kids: (
      <img
-    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779377322/Gemini_Generated_Image_m2s62mm2s62mm2s6_ezvx9b.png"
+    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779440167/Gemini_Generated_Image_anuedyanuedyanue_gibqpu.png"
     style={{position:"absolute",inset:0,width:"100%",
     height:"100%",objectFit:"cover",filter:"brightness(0.85)"}}
     alt=""
@@ -218,7 +218,7 @@ culture: (
   ),
   practical: (
       <img
-    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779375209/Gemini_Generated_Image_17tfra17tfra17tf_r2jxx6.png"
+    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779438302/Gemini_Generated_Image_sw9gdisw9gdisw9g_miavwo.png"
     style={{position:"absolute",inset:0,width:"100%",
     height:"100%",objectFit:"cover",filter:"brightness(0.85)"}}
     alt=""
@@ -243,7 +243,7 @@ culture: (
   ),
   sports: (
   <img
-    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779375358/Gemini_Generated_Image_rhbyn6rhbyn6rhby_olount.png"
+    src="https://res.cloudinary.com/dntf51gis/image/upload/v1779438544/Gemini_Generated_Image_b43pbdb43pbdb43p_uyrdwq.png"
     style={{position:"absolute",inset:0,width:"100%",
     height:"100%",objectFit:"cover",filter:"brightness(0.85)"}}
     alt=""
