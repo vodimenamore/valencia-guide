@@ -340,10 +340,6 @@ const styles = `
   .now-text { font-size: 12px; color: var(--ink); line-height: 1.5; }
   .now-loading { font-size: 12px; color: var(--muted); font-style: italic; }
   .now-refresh { margin-left: auto; font-size: 11px; color: var(--taronja-mid); cursor: pointer; flex-shrink: 0; padding: 2px 6px; border: 0.5px solid var(--taronja-mid); border-radius: 10px; background: none; font-family: inherit; white-space: nowrap; }
-  .nav { display: flex; gap: 6px; overflow-x: auto; padding: 14px 20px; scrollbar-width: none; background: var(--cream); border-bottom: 1px solid var(--border); }
-  .nav::-webkit-scrollbar { display: none; }
-  .nav-btn { flex-shrink: 0; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-family: inherit; cursor: pointer; border: 1px solid var(--border); background: #fff; color: var(--muted); transition: all 0.15s; white-space: nowrap; }
-  .nav-btn.active { background: var(--taronja-dark); color: #fff; border-color: var(--taronja-dark); }
   .content { padding: 0 0 80px; }
   .section-cards { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; padding: 16px 20px; }
   .sec-card { position: relative; border-radius: 14px; overflow: hidden; cursor: pointer; transition: transform 0.15s; height: 140px; border: 3px solid transparent; }
@@ -509,13 +505,6 @@ export default function App() {
         <div className="content">
           {!activeSection ? (
             <>
-              <div className="nav">
-                {SECTIONS.map(s => (
-                  <button key={s.id} className="nav-btn" onClick={() => setActive(s.id)}>
-                    {s.icon} {s.label.split(" ")[0]}
-                  </button>
-                ))}
-              </div>
               <div className="section-cards">
                 {SECTIONS.map(s => (
                   <div key={s.id} className="sec-card" onClick={() => setActive(s.id)}>
