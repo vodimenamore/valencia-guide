@@ -550,12 +550,23 @@ export default function App() {
   const [locationLoading, setLocationLoading] = useState(false);
   const resolveToken = useRef(0);
 
+  const navigateTo = useCallback((sectionId) => {
+    history.pushState({ section: sectionId }, '', `#${sectionId}`);
+    setActive(sectionId);
+  }, []);
+
   useEffect(() => {
     const on = () => setIsOnline(true);
     const off = () => setIsOnline(false);
     window.addEventListener('online', on);
     window.addEventListener('offline', off);
     return () => { window.removeEventListener('online', on); window.removeEventListener('offline', off); };
+  }, []);
+
+  useEffect(() => {
+    const onPop = (e) => setActive(e.state?.section ?? null);
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
   }, []);
 
   const handleLocationInput = useCallback(async (val) => {
@@ -696,7 +707,7 @@ export default function App() {
             ) : (
               <div className="section-cards">
                 {SECTIONS.map(s => (
-                  <div key={s.id} className="sec-card" onClick={() => setActive(s.id)}>
+                  <div key={s.id} className="sec-card" onClick={() => navigateTo(s.id)}>
                     {CARD_SVGS[s.id]}
                     <div className="sec-card-body">
                       <div className="sec-title">{s.label}</div>
@@ -711,7 +722,7 @@ export default function App() {
               </div>
             )
           ) : (
-            <SectionView section={activeSection} onBack={() => setActive(null)} />
+            <SectionView section={activeSection} onBack={() => history.back()} />
           )}
         </div>
       </div>
