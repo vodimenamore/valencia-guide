@@ -301,6 +301,16 @@ function extractCoordsFromText(text) {
   return null;
 }
 
+function extractAddressFromText(html) {
+  // Pull the q= address parameter out of the HTML (appears in multiple places)
+  const match = html.match(/[?&]q=([^"'<]+)/);
+  if (!match) return null;
+  const raw = match[1].split('&')[0]; // stop at & or &amp;
+  const decoded = decodeURIComponent(raw.replace(/\+/g, ' ')).trim();
+  // Only return something that looks like an address (has a comma, not just coords)
+  return decoded.includes(',') && !/^-?\d/.test(decoded) ? decoded : null;
+}
+
 function haversineKm(lat1, lng1, lat2, lng2) {
   const R = 6371;
   const dLat = (lat2 - lat1) * Math.PI / 180;
@@ -568,8 +578,24 @@ export default function App() {
         const text = await res.text();
         if (token !== resolveToken.current) return;
         // The proxy follows redirects — look for coords in the final page HTML
-        const resolved = extractCoordsFromText(text);
+        let resolved = extractCoordsFromText(text);
         if (resolved) { setUserLocation(resolved); setLocationLoading(false); return; }
+
+        // Fallback: extract address from q= param and geocode via Nominatim
+        const address = extractAddressFromText(text);
+        if (address) {
+          const geoRes = await fetch(
+            `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(address)}&format=json&limit=1`,
+            { headers: { 'User-Agent': 'ValenciaGuideApp/1.0' } }
+          );
+          if (token !== resolveToken.current) return;
+          const geoData = await geoRes.json();
+          if (token !== resolveToken.current) return;
+          if (geoData.length > 0) {
+            resolved = { lat: parseFloat(geoData[0].lat), lng: parseFloat(geoData[0].lon) };
+            setUserLocation(resolved); setLocationLoading(false); return;
+          }
+        }
       } catch { if (token !== resolveToken.current) return; }
       setLocationLoading(false);
       setLocationError(true);
