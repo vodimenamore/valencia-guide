@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 
 const SECTIONS = [
   { id: "history",  label: "Past Perfect",  desc: "History, monuments & architecture",      color: "#534AB7", bg: "#EEEDFE" },
-  { id: "food",     label: "Beyond Paella",            desc: "Food, drinks & local specialities",   color: "#f5ed0b", bg: "#FFF2EA"},
+  { id: "food",     label: "Beyond Paella",            desc: "Food, drinks & local specialities",   color: "#B07D0E", bg: "#FFF2EA"},
   { id: "culture",  label: "Fiesta & Fervor",        desc: "Festivals, art & culture",   color: "#CC4A00", bg: "#FFF2EA" },
   { id: "nightlife",label: "After Dark",        desc: "Rooftops, clubs & late nights", color: "#2A1A4A", bg: "#EEEAF8" },
   { id: "beaches",  label: "Shore & Explore",      desc: "Sun, sand & outdoors", color: "#185FA5", bg: "#E6F1FB" },
@@ -451,7 +451,7 @@ function SectionView({ section, onBack }) {
 
   return (
     <div className="section-view">
-      <div className="section-header">
+      <div className="section-header" style={{background: section.color}}>
         <button className="back-btn" onClick={onBack}>←</button>
         <div className="section-header-text">
           <h2>{section.label}</h2>
