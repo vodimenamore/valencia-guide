@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 
 const SECTIONS = [
   { id: "history",  label: "Past Perfect",  desc: "History, monuments & architecture",      color: "#534AB7", bg: "#EEEDFE" },
-  { id: "food",     label: "Beyond Paella",            desc: "What a local actually eats",   color: "#f5ed0b", bg: "#FFF2EA"},
+  { id: "food",     label: "Beyond Paella",            desc: "Food, drinks & local specialities",   color: "#f5ed0b", bg: "#FFF2EA"},
   { id: "culture",  label: "Fiesta & Fervor",        desc: "Festivals, art & culture",   color: "#CC4A00", bg: "#FFF2EA" },
   { id: "nightlife",label: "After Dark",        desc: "Rooftops, clubs & late nights", color: "#2A1A4A", bg: "#EEEAF8" },
   { id: "beaches",  label: "Shore & Explore",      desc: "Sun, sand & outdoors", color: "#185FA5", bg: "#E6F1FB" },
@@ -303,7 +303,8 @@ function extractCoordsFromText(text) {
 
 function extractAddressFromText(html) {
   // Pull the q= address parameter out of the HTML (appears in multiple places)
-  const match = html.match(/[?&]q=([^"'<]+)/);
+  // Normalise &amp; → & so both ?q= and &amp;q= are matched
+  const match = html.replace(/&amp;/g, '&').match(/[?&]q=([^"'<]+)/);
   if (!match) return null;
   const raw = match[1].split('&')[0]; // stop at & or &amp;
   const decoded = decodeURIComponent(raw.replace(/\+/g, ' ')).trim();
