@@ -1,18 +1,18 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 
 const SECTIONS = [
-  { id: "history",  label: "Past Perfect",  desc: "History, monuments & architecture",      color: "#534AB7", bg: "#EEEDFE" },
+  { id: "history",  label: "Past Perfect",  desc: "History, monuments & architecture",      color: "#0D47A1", bg: "#EEEDFE" },
   { id: "food",     label: "Beyond Paella",            desc: "Food, drinks & local specialities",   color: "#B07D0E", bg: "#FFF2EA"},
-  { id: "culture",  label: "Fiesta & Fervor",        desc: "Festivals, art & culture",   color: "#CC4A00", bg: "#FFF2EA" },
-  { id: "nightlife",label: "After Dark",        desc: "Rooftops, clubs & late nights", color: "#2A1A4A", bg: "#EEEAF8" },
-  { id: "beaches",  label: "Shore & Explore",      desc: "Sun, sand & outdoors", color: "#185FA5", bg: "#E6F1FB" },
-  { id: "flora",    label: "The Green Soul",           desc: "The city's living landmarks",  color: "#2D6A2D", bg: "#E8F5E8" },
-  { id: "kids",     label: "Little Adventurers",              desc: "Valencia with kids",    color: "#a45510", bg: "#E6F1FB" },
-  { id: "sports",   label: "Game On",           desc: "Football, basketball & more",  color: "#CC4A00", bg: "#FFF2EA" },
-  { id: "shopping", label: "Bags & Bazaars",      desc: "What to buy & where",          color: "#993556", bg: "#FBEAF0" },
-  { id: "walks",    label: "Stroll-encia",      desc: "The best routes on foot",      color: "#7A4E2D", bg: "#FAF0E6" },
-  { id: "practical",label: "Street Smarts",          desc: "How to move like a local",     color: "#5F5E5A", bg: "#F1EFE8" },
-  { id: "bsides",   label: "The B-Sides",             desc: "Everything else worth knowing", color: "#3A3560", bg: "#EEEDF8" },
+  { id: "culture",  label: "Fiesta & Fervor",        desc: "Festivals, art & culture",   color: "#C8231A", bg: "#FFF2EA" },
+  { id: "nightlife",label: "After Dark",        desc: "Rooftops, clubs & late nights", color: "#4A148C", bg: "#EEEAF8" },
+  { id: "beaches",  label: "Shore & Explore",      desc: "Sun, sand & outdoors", color: "#E8A020", bg: "#E6F1FB" },
+  { id: "flora",    label: "The Green Soul",           desc: "The city's living landmarks",  color: "#1B5E20", bg: "#E8F5E8" },
+  { id: "kids",     label: "Little Adventurers",              desc: "Valencia with kids",    color: "#2E7D32", bg: "#E6F1FB" },
+  { id: "sports",   label: "Game On",           desc: "Football, basketball & more",  color: "#0D47A1", bg: "#FFF2EA" },
+  { id: "shopping", label: "Bags & Bazaars",      desc: "What to buy & where",          color: "#B71C1C", bg: "#FBEAF0" },
+  { id: "walks",    label: "Stroll-encia",      desc: "The best routes on foot",      color: "#FF6C0C", bg: "#FAF0E6" },
+  { id: "practical",label: "Street Smarts",          desc: "How to move like a local",     color: "#5E2750", bg: "#F1EFE8" },
+  { id: "bsides",   label: "The B-Sides",             desc: "Everything else worth knowing", color: "#4A148C", bg: "#EEEDF8" },
 ];
 
 const CONTENT = {
@@ -284,8 +284,8 @@ function parseGoogleMapsUrl(raw) {
 }
 
 function extractCoordsFromText(text) {
-  // Decode percent-encoded chars before matching so %2B→+ and %2C→, are handled
-  const s = text.replace(/%2B/gi, '+').replace(/%2C/gi, ',').replace(/\+/g, ' ');
+  // Normalise HTML entities and percent-encoding before matching
+  const s = text.replace(/&amp;/g, '&').replace(/%2B/gi, '+').replace(/%2C/gi, ',').replace(/\+/g, ' ');
   // @lat,lng (canonical URLs, og:url)
   const atMatch = s.match(/@(-?\d{1,3}\.\d{4,}),\s*(-?\d{1,3}\.\d{4,})/);
   if (atMatch) return { lat: parseFloat(atMatch[1]), lng: parseFloat(atMatch[2]) };
@@ -514,9 +514,9 @@ function NowBar() {
       const data = await res.json();
       const textBlocks = (data.content || []).filter(b => b.type === "text").map(b => b.text).join(" ").trim();
       const clean = textBlocks.replace(/^["']|["']$/g, "").trim();
-      setText(clean || "COMING SOON");
+      setText(clean || "...coming soon (mañana)");
     } catch {
-      setText("coming soon (mañana)");
+      setText("...coming soon (mañana)");
     } finally {
       setLoading(false);
     }
